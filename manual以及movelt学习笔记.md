@@ -9,3 +9,12 @@
 每个功能对应一个sendcommand
 后发送出去
 
+# Movelt
+## 初步了解
+帮助进行运动学分析解算的一个ros包
+
+Movelt 由**TRACLab，IKFast**进行逆运动学解算
+KDL正运动学解算
+
+路径规划：OMPL、CHOMP、SBPL、、、
+碰撞检测：FCL、PCD
