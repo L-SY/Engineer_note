@@ -10,6 +10,9 @@
 后发送出去
 
 # Movelt
+
+参考教程https://ros-planning.github.io/moveit_tutorials/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html
+
 ## 初步了解
 帮助进行运动学分析解算的一个ros包
 
@@ -18,3 +21,22 @@ KDL正运动学解算
 
 路径规划：OMPL、CHOMP、SBPL、、、
 碰撞检测：FCL、PCD
+
+## 配置环境
+具体教程https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html
+配置movelt环境途中用到了一个不同于catkin名为wstool的编译工具(不确定)
+__注意：配置实例环境时候不要随意使用
+```
+echo 'source ~/ws_moveit/devel/setup.bash' >> ~/.bashrc
+```
+会导致rm_ws又要手动配置，开启示例时候应该手动配置环境变量__
+
+## RViz中的交互
+不知道为何我没法让其碰撞变红
+超出了工作空间也并没有发生啥
+利用下方的joint选项卡可以只控制单个关节 “null space exploration” 的调节可以让爪子保持不动只动关节
+<table><tr><td bgcolor=DarkSeaGreen>本质的运动计划便是确定一个起点和终点，然后过程确保机械臂不会碰到他自己，勾选show tail选项可以看到运动轨迹</td></tr></table>
+
+### 各种可视化
+打开Trajectory Slider可以查看各个时间点机械臂的状态
+使用笛卡尔路径，再
