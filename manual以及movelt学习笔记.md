@@ -48,4 +48,4 @@ roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
 
 ### 各种可视化
 打开Trajectory Slider可以查看各个时间点机械臂的状态
-使用笛卡尔路径，再
+使用笛卡尔路径，再点击plan可以实现笛卡尔运动让爪子进行线性运动
