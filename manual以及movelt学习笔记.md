@@ -36,7 +36,7 @@ echo 'source ~/ws_moveit/devel/setup.bash' >> ~/.bashrc
 
 在开始学习之前，先打开官方提供的实例
 ```shell
-roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
+mon launch panda_moveit_config demo.launch rviz_tutorial:=true
 ```
 
 ## RViz中的交互
@@ -49,3 +49,38 @@ roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
 ### 各种可视化
 打开Trajectory Slider可以查看各个时间点机械臂的状态
 使用笛卡尔路径，再点击plan可以实现笛卡尔运动让爪子进行线性运动
+
+## Movelt C++的接口学习
+
+### 运行代码
+第一个shell
+```
+mon launch panda_moveit_config demo.launch
+```
+第二个shell
+```
+mon launch moveit_tutorials move_group_interface_tutorial.launch
+```
+
+### 代码理解
+#### 类的理解
+
+*JointModelGroup*用于储存各个计划组和关节模型组
+```c++
+static const std::string PLANNING_GROUP = "panda_arm";
+```
+*MoveGroupInterface*为了方便改变计划组的名字而设置
+
+```c++
+moveit::planning_interface::MoveGroupInterface move_group_interface(PLANNING_GROUP);
+```
+*PlanningSceneInterface*用于添加或者删除碰撞箱和障碍物
+```c++
+moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+```
+*Raw pointers*用于指向计划组来提升性能
+```c++
+const moveit::core::JointModelGroup* joint_model_group =
+    move_group_interface.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
+```
+
